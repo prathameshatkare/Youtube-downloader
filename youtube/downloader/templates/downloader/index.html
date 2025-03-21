@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Downloader</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen flex justify-center items-center p-4">
+    <div class="max-w-md w-full bg-white rounded-xl shadow-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_20px_50px_rgba(8,_112,_184,_0.7)] transform hover:-translate-y-1">
+        <!-- Header with gradient -->
+        <div class="bg-gradient-to-r from-red-600 to-red-700 p-6 text-center">
+            <div class="flex justify-center mb-3">
+                <i class="fab fa-youtube text-white text-4xl"></i>
+            </div>
+            <h1 class="text-2xl font-bold text-white">YouTube Downloader</h1>
+            <p class="text-red-100 mt-1">Download your favorite videos easily</p>
+        </div>
+        
+        <!-- Form section -->
+        <div class="p-6 bg-white">
+            <form method="POST" action="{% url 'download' %}" onsubmit="showLoading()" class="space-y-5">
+                {% csrf_token %}
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fas fa-link text-gray-400"></i>
+                    </div>
+                    <input type="text" name="link" placeholder="Enter YouTube URL" required
+                        class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200"
+                    >
+                </div>
+                
+                <div class="flex flex-col gap-3">
+                    <button type="submit" 
+                        class="w-full bg-red-600 hover:bg-red-700 text-white font-medium py-3 px-4 rounded-lg transition-all duration-200 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl">
+                        <i class="fas fa-download"></i>
+                        <span>Download Now</span>
+                    </button>
+                    
+                    <div class="text-center text-sm text-gray-500">
+                        <p>Supported formats: MP4, MP3, WEBM</p>
+                    </div>
+                </div>
+            </form>
+            
+            <!-- Status indicators -->
+            <div id="loading" class="hidden mt-4 text-center">
+                <div class="animate-pulse flex items-center justify-center gap-2 text-blue-600">
+                    <i class="fas fa-circle-notch fa-spin"></i>
+                    <span class="font-medium">Processing your download...</span>
+                </div>
+            </div>
+            
+            <div id="error" class="hidden mt-4 bg-red-50 text-red-600 p-3 rounded-lg flex items-center gap-2">
+                <i class="fas fa-exclamation-circle"></i>
+                <span>Invalid URL. Please try again with a valid YouTube link.</span>
+            </div>
+            
+            <div id="success" class="hidden mt-4 bg-green-50 text-green-600 p-3 rounded-lg flex items-center gap-2">
+                <i class="fas fa-check-circle"></i>
+                <span>Success! Your video has been downloaded.</span>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="p-4 bg-gray-50 text-center text-gray-500 text-sm border-t">
+            <p>Download videos for personal use only</p>
+        </div>
+    </div>
+    
+    <script>
+        function showLoading() {
+            document.getElementById('loading').classList.remove('hidden');
+            document.getElementById('error').classList.add('hidden');
+            document.getElementById('success').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
