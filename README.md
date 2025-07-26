@@ -1,73 +1,80 @@
-# YouTube Downloader - `youtube` Module
+# Youtube Downloader
 
-This folder contains the core logic for downloading videos from YouTube as part of the [Youtube-downloader](https://github.com/prathameshatkare/Youtube-downloader) project.
-
-## Overview
-
-The `youtube` module is responsible for handling YouTube video downloads. It provides functionalities to fetch video metadata, select formats, and save videos locally. This module is designed to be integrated with the main Youtube-downloader application, and can also be used independently as a library for YouTube video downloading tasks.
+A simple and efficient YouTube downloader built with Python. This project allows users to download videos from YouTube in various formats and resolutions directly to their local machine.
 
 ## Features
 
-- Download videos from YouTube by URL
-- Support for multiple formats and resolutions
-- Fetch video metadata (title, author, length, etc.)
-- Progress tracking and error handling
+- Download YouTube videos using a URL
+- Support for multiple video resolutions
+- Download audio-only files (MP3)
+- User-friendly command-line interface
+- Supports batch downloads
+- Lightweight and fast
 
-## Folder Structure
+## Technologies Used
 
-```
-youtube/
-├── __init__.py
-├── downloader.py
-├── utils.py
-└── ...
-```
-- `downloader.py`: Main logic for downloading YouTube videos.
-- `utils.py`: Utility functions used for processing YouTube URLs, formats, and metadata.
-- `__init__.py`: Makes the folder a Python package.
+- **Python**: Core programming language
+- **pytube**: Library for downloading YouTube videos
+- Other dependencies listed in `requirements.txt`
+
+## Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/prathameshatkare/Youtube-downloader.git
+   cd Youtube-downloader
+   ```
+
+2. **Install dependencies:**
+   Make sure you have Python 3.x installed.
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 ## Usage
 
-### As Part of the Main Application
+Run the downloader from the command line:
 
-The main application imports and uses the `youtube` module for all YouTube-related download operations.
-
-### As a Library
-
-You can use this module in your own Python project:
-```python
-from youtube.downloader import download_video
-
-url = "https://www.youtube.com/watch?v=example"
-download_video(url, output_path="downloads/")
-```
-
-## Requirements
-
-- Python 3.7+
-- [pytube](https://github.com/pytube/pytube) or similar package for handling YouTube streams
-
-Install dependencies:
 ```bash
-pip install pytube
+python downloader.py
 ```
+
+You will be prompted to enter the YouTube video URL and select the desired format and resolution.
+
+### Example
+
+```bash
+$ python downloader.py
+Enter YouTube URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+Select format:
+1. Video (MP4)
+2. Audio (MP3)
+Your choice: 1
+Select resolution:
+1. 1080p
+2. 720p
+3. 480p
+Your choice: 2
+Downloading...
+Download complete!
+```
+
+## Configuration
+
+- You can adjust output directories and default settings in the `config.py` file.
 
 ## Contributing
 
-1. Fork the repository.
-2. Create your feature branch (`git checkout -b feature/fooBar`).
-3. Commit your changes (`git commit -am 'Add some fooBar'`).
-4. Push to the branch (`git push origin feature/fooBar`).
-5. Open a Pull Request.
+Contributions are welcome! Please open issues or submit pull requests for improvements or bug fixes.
 
 ## License
 
 This project is licensed under the MIT License.
 
+## Disclaimer
+
+This tool is intended for educational purposes only. Please respect YouTube's Terms of Service and copyright laws when downloading content.
+
 ## Author
 
-- [Prathamesh Atkare](https://github.com/prathameshatkare)
-
----
-
-Feel free to open issues or pull requests for improvements!
+Made with ❤️ by [prathameshatkare](https://github.com/prathameshatkare)
